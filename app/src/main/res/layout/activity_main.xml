@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/welcome_text"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/enter_square_N"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:gravity="center" />
+
+            <EditText
+                android:id="@+id/input_edit_text"
+                android:gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:textSize="18sp"
+                android:inputType="number"
+                android:hint="@string/enter_warning" />
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/submit_button" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/result_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:text="@string/magic_square_text"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"/>
+
+        <LinearLayout
+            android:id="@+id/magic_square"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:background="@android:color/black"
+            android:visibility="invisible">
+
+            <GridView
+                android:id="@+id/magic_square_grid"
+                android:layout_marginLeft="3sp"
+                android:layout_marginRight="3sp"
+                android:layout_marginTop="3sp"
+                android:layout_marginBottom="3sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@android:color/black"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="3sp"
+                android:horizontalSpacing="3sp"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

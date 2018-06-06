@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Magic Square</string>
+    <string name="enter_square_N">Please enter magic square number N:</string>
+    <string name="enter_warning">N should be odd only!</string>
+    <string name="submit_button">Submit</string>
+    <string name="magic_square_text">Magic Square</string>
+</resources>
