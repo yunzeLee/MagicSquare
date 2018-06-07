@@ -75,8 +75,8 @@
                 android:gravity="center"
                 android:background="@android:color/black"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="3sp"
-                android:horizontalSpacing="3sp"
+                android:verticalSpacing="2sp"
+                android:horizontalSpacing="2sp"
                 android:visibility="invisible"/>
         </LinearLayout>
 

@@ -20,6 +20,10 @@ import java.util.List;
  */
 public class MainActivity extends Activity {
 
+    // ----------------------
+    //       CONSTANTS
+    // ----------------------
+
     private final static String INPUT_NUMBER_KEY = "INPUT_NUMBER";
     private final static String ANSWER_KEY = "ANSWER";
     private final static String SQUARE_ROW_SEPARATOR = "/";
@@ -27,8 +31,11 @@ public class MainActivity extends Activity {
 
     private final static int REQUEST_CODE = 1;
 
-    private GridViewAdapter mGridViewAdapter;
+    // ----------------------
+    //         FIELDS
+    // ----------------------
 
+    private GridViewAdapter mGridViewAdapter;
     private LinearLayout mMagicSquareLayout;
 
     @Override
@@ -47,7 +54,7 @@ public class MainActivity extends Activity {
         gridView.setAdapter(mGridViewAdapter);
 
         // Set the onClickListener to response when user click on the submit button
-        button.setOnClickListener(new SubmitButtonOnClickListener(this, editText, gridView));
+        button.setOnClickListener(new SubmitButtonOnClickListener(this, editText));
     }
 
     @Override
@@ -67,8 +74,8 @@ public class MainActivity extends Activity {
 
     /**
      * A method to call {@link BuildMagicSquareActivity} to build magic square by sending the input number
-     * @param number that needs for building square
      *
+     * @param number that needs for building square
      * @see BuildMagicSquareActivity
      */
     public void startBuildMagicSquare(final int number) {
@@ -77,12 +84,19 @@ public class MainActivity extends Activity {
         startActivityForResult(intent, REQUEST_CODE);
     }
 
+    // ----------------------
+    //     HELPER METHOD
+    // ----------------------
+
     /**
      * A helper method to parse the retrieve string data
+     *
      * @param data that representing built magic square
      * @return an int array that contains all numbers of magic square
      */
     private int[] parseMagicSquare(final String data) {
+
+        // Null check first
         if (data == null) {
             throw new NullPointerException(this.getClass().toString() + ": find null!");
         }

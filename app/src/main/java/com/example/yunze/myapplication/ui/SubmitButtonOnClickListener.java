@@ -4,36 +4,38 @@ import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.yunze.myapplication.MainActivity;
 
 /**
- * a {@link android.view.View.OnClickListener} to responsible for the submit button
+ * A {@link android.view.View.OnClickListener} to responsible for the submit button
  */
 public class SubmitButtonOnClickListener implements View.OnClickListener {
 
     /**
-     * A toast message to show when input is not invalid (e.g. too big, negative, event number)
+     * A toast message to show when input is not invalid (e.g. empty, too big, negative or even number)
      */
+    private static final String EMPTY_INPUT_WARNING = "Please input before submit!";
     private static final String INVALID_INPUT_WARNING = "This input is invalid!";
+    private static final int MAX_VALID_INPUT_NUMBER = 24;
+
+    // ----------------------
+    //          FIELDS
+    // ----------------------
 
     private final MainActivity mActivity;
     private final EditText mEditText;
-    private final GridView mGridView;
 
     public SubmitButtonOnClickListener(final MainActivity activity,
-                                       final EditText editText,
-                                       final GridView gridView) {
-        if (activity == null || editText == null || gridView == null) {
+                                       final EditText editText) {
+        // Null check first
+        if (activity == null || editText == null) {
             throw new NullPointerException(this.getClass().toString() + ": find null!");
         }
         mActivity = activity;
         mEditText = editText;
-        mGridView = gridView;
     }
-
 
     @Override
     public void onClick(final View view) {
@@ -46,16 +48,16 @@ public class SubmitButtonOnClickListener implements View.OnClickListener {
             inputManager.hideSoftInputFromWindow(mActivity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
 
-        // Get the input, show a toast if the number is too big
+        // Show a toast if the input number is empty
         final String input = mEditText.getText().toString();
-        if (input.length() > 3) {
-            Toast.makeText(mActivity, INVALID_INPUT_WARNING, Toast.LENGTH_LONG).show();
+        if (input.length() == 0) {
+            Toast.makeText(mActivity, EMPTY_INPUT_WARNING, Toast.LENGTH_LONG).show();
             return;
         }
 
-        // Show a toast if the input number is negative or even
+        // Show a toast if the input number is too big (larger than 50), negative or even
         final int number = Integer.parseInt(mEditText.getText().toString());
-        if (number <= 0 || number % 2 == 0) {
+        if (number > MAX_VALID_INPUT_NUMBER || number <= 0 ||number % 2 == 0) {
             Toast.makeText(mActivity, INVALID_INPUT_WARNING, Toast.LENGTH_LONG).show();
             return;
         }

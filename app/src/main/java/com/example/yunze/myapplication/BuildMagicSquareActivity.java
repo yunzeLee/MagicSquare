@@ -9,10 +9,14 @@ import android.os.Bundle;
  */
 public class BuildMagicSquareActivity extends Activity {
 
+    // ----------------------
+    //        CONSTANTS
+    // ----------------------
+
     private final static String INPUT_NUMBER_KEY = "INPUT_NUMBER";
     private final static String ANSWER_KEY = "ANSWER";
-    private final static String SQUARE_ROW_SEPERATOR = "/";
-    private final static String SQUARE_NUMBER_SEPERATOR = " ";
+    private final static String SQUARE_ROW_SEPARATOR = "/";
+    private final static String SQUARE_NUMBER_SEPARATOR = " ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +36,13 @@ public class BuildMagicSquareActivity extends Activity {
         finish();
     }
 
+    // ----------------------
+    //     HELPER METHOD
+    // ----------------------
+
     /**
      * Helper method to build the magic square
+     *
      * @param number that need to create square for
      * @return the magic square
      */
@@ -77,6 +86,7 @@ public class BuildMagicSquareActivity extends Activity {
 
     /**
      * Helper method to translate the int array to string so it can be sent
+     *
      * @param square that need to be translated
      * @return a {@link String} that represents the magic square
      * Note: Both this activity and {@link MainActivity} should know about
@@ -91,10 +101,10 @@ public class BuildMagicSquareActivity extends Activity {
             for(int j = 0; j < column; j++) {
                 stringBuilder.append(square[i][j]);
                 if (j != column - 1) {
-                    stringBuilder.append(SQUARE_NUMBER_SEPERATOR);
+                    stringBuilder.append(SQUARE_NUMBER_SEPARATOR);
                 }
             }
-            stringBuilder.append(SQUARE_ROW_SEPERATOR);
+            stringBuilder.append(SQUARE_ROW_SEPARATOR);
         }
         return stringBuilder.toString();
     }

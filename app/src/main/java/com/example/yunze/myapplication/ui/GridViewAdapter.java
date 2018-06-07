@@ -15,11 +15,22 @@ import com.example.yunze.myapplication.R;
  */
 public class GridViewAdapter extends BaseAdapter {
 
+    // ----------------------
+    //          FIELDS
+    // ----------------------
+
     private final Context mContext;
     private final GridView mGridView;
     private int[] mSquare;
 
+    /**
+     * Constructor of {@link GridViewAdapter}
+     * @param context of the current application
+     * @param gridView that needs to show magic square
+     */
     public GridViewAdapter(final Context context, final GridView gridView) {
+
+        // Null check first
         if (context == null || gridView == null) {
             throw new NullPointerException(this.getClass().toString() + ": find null!");
         }
@@ -52,6 +63,8 @@ public class GridViewAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.grid_text_view, null);
         }
 
+        // TODO: try to make this text view auto-shrinking so when number become larger
+        // TODO: it can show correctly in smaller size.
         final TextView textView = convertView.findViewById(R.id.grid_text);
         textView.setText(String.valueOf(mSquare[position]));
         return convertView;
@@ -59,9 +72,16 @@ public class GridViewAdapter extends BaseAdapter {
 
     /**
      * Helper method to update the result and shown in this grid view
+     *
      * @param square that needs to shown
      */
     public void updateResult(final int[] square) {
+
+        // Null check first
+        if (square == null) {
+            throw new NullPointerException(this.getClass().toString() + ": find null!");
+        }
+
         mSquare = square;
         notifyDataSetChanged();
         mGridView.setNumColumns((int)Math.sqrt(square.length));
